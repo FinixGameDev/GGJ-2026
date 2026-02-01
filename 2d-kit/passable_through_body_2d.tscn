@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dpsbxx2dwvjmf"]
+
+[node name="PassableThroughBody2D" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0

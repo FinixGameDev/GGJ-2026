@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://dsxpqaxurt8pj"]
+
+[ext_resource type="PackedScene" uid="uid://x1uqhkfbsg32" path="res://2d-kit/bumping_enemy_2d.tscn" id="1_o7cu0"]
+[ext_resource type="Texture2D" uid="uid://cb84qcqdt0x40" path="res://spritesheet.svg" id="2_5vxpa"]
+[ext_resource type="PackedScene" uid="uid://df4an77wb5p7u" path="res://2d-kit/hit_area_2d.tscn" id="3_5vxpa"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_15rt5"]
+radius = 39.0
+height = 176.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u2y4b"]
+size = Vector2(78, 184.5)
+
+[node name="Minotaur" instance=ExtResource("1_o7cu0")]
+collision_mask = 0
+speed = 350.0
+gravity = 0.0
+direction = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_5vxpa")
+region_enabled = true
+region_rect = Rect2(0, 129, 128, 192)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+position = Vector2(-11, 6)
+shape = SubResource("CapsuleShape2D_15rt5")
+
+[node name="Hitbox" parent="." index="2" instance=ExtResource("3_5vxpa")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(12, 2)
+shape = SubResource("RectangleShape2D_u2y4b")
+debug_color = Color(0.99984497, 0, 0.11477821, 0.41960785)

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cag8dl1ditfhk"]
+
+[ext_resource type="Texture2D" uid="uid://cb84qcqdt0x40" path="res://spritesheet.svg" id="1_q5lds"]
+[ext_resource type="Script" uid="uid://bg5y7fcnctih4" path="res://taurus_mask.gd" id="1_quxht"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_quxht"]
+radius = 34.0
+
+[node name="TaurusMask" type="Node2D"]
+script = ExtResource("1_quxht")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_q5lds")
+region_enabled = true
+region_rect = Rect2(256, 64, 64, 64)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_quxht")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

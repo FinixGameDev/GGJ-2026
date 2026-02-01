@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcjlbng4w370i"]
+
+[ext_resource type="Script" uid="uid://cwo5jrk5ox314" path="res://2d-kit/hurt_area_2d.gd" id="1_4q3jx"]
+
+[node name="HurtArea2D" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_4q3jx")

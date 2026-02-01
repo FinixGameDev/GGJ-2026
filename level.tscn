@@ -1,0 +1,33 @@
+[gd_scene load_steps=12 format=3 uid="uid://b2v0hyi7hrfy7"]
+
+[ext_resource type="Script" uid="uid://bjpli6m2o8bks" path="res://level.gd" id="1_0b4ue"]
+[ext_resource type="PackedScene" uid="uid://dibfmh114723r" path="res://2d-kit/pass_through_player_2d.tscn" id="1_vonw3"]
+[ext_resource type="PackedScene" uid="uid://pv1mp4vw18eb" path="res://obstacle_1.tscn" id="2_n6hdu"]
+[ext_resource type="PackedScene" uid="uid://dmf4auxobv34k" path="res://initial_zone.tscn" id="2_oi3di"]
+[ext_resource type="PackedScene" uid="uid://ber8ckwmli1mr" path="res://obstacle_2.tscn" id="3_km5ld"]
+[ext_resource type="PackedScene" uid="uid://dsxpqaxurt8pj" path="res://minotaur.tscn" id="4_0b4ue"]
+[ext_resource type="PackedScene" uid="uid://dov37psfx5jno" path="res://rest.tscn" id="4_i2t4f"]
+[ext_resource type="PackedScene" uid="uid://b658agt4kfh30" path="res://obstacle_3.tscn" id="5_km5ld"]
+[ext_resource type="PackedScene" uid="uid://cl50ndpp2sw3f" path="res://obstacle_4.tscn" id="6_8cye3"]
+[ext_resource type="PackedScene" uid="uid://dj2r55thcs3xw" path="res://final_zone.tscn" id="7_8cye3"]
+[ext_resource type="AudioStream" uid="uid://plexftqx8waj" path="res://annoying_song.wav" id="11_2orkt"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_0b4ue")
+zones = Array[PackedScene]([ExtResource("2_n6hdu"), ExtResource("3_km5ld"), ExtResource("4_i2t4f"), ExtResource("5_km5ld"), ExtResource("6_8cye3")])
+final_zone = ExtResource("7_8cye3")
+initial_zone = ExtResource("2_oi3di")
+
+[node name="PassThroughPlayer2D" parent="." instance=ExtResource("1_vonw3")]
+position = Vector2(0, -70)
+speed = 250.0
+
+[node name="Camera2D" type="Camera2D" parent="PassThroughPlayer2D"]
+
+[node name="Minotaur" parent="." instance=ExtResource("4_0b4ue")]
+position = Vector2(-257, -93)
+speed = 210.0
+
+[node name="Music" type="AudioStreamPlayer" parent="Minotaur"]
+stream = ExtResource("11_2orkt")
+autoplay = true

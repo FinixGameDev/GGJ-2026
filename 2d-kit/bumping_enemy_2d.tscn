@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://x1uqhkfbsg32"]
+
+[ext_resource type="PackedScene" uid="uid://dxj4wgcdx6vyr" path="res://2d-kit/basic_moving_character_2d.tscn" id="1_tyltu"]
+[ext_resource type="Script" uid="uid://m2gh540tth7r" path="res://2d-kit/bumping_enemy_2d.gd" id="2_73dwd"]
+
+[node name="BumpingEnemy2D" instance=ExtResource("1_tyltu")]
+script = ExtResource("2_73dwd")

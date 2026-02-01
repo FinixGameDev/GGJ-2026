@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://3hundd7yn24i"]
+
+[ext_resource type="PackedScene" uid="uid://df4an77wb5p7u" path="res://2d-kit/hit_area_2d.tscn" id="1_nrdsm"]
+[ext_resource type="Texture2D" uid="uid://cb84qcqdt0x40" path="res://spritesheet.svg" id="2_8fhau"]
+
+[node name="Spikes" type="StaticBody2D"]
+
+[node name="HitArea2D" parent="." instance=ExtResource("1_nrdsm")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitArea2D"]
+polygon = PackedVector2Array(-31, 31, -25, -7, -12, -7, 8, -7, 24, -6, 31, 32)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_8fhau")
+region_enabled = true
+region_rect = Rect2(320, 0, 64, 64)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-30, 30, -23, -5, 23, -4, 25, 27, -29, 30)

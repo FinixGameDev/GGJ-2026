@@ -1,0 +1,178 @@
+[gd_scene load_steps=14 format=4 uid="uid://bjim448fi76kn"]
+
+[ext_resource type="FontFile" uid="uid://b3o42ccmna7v5" path="res://DIOGENES.ttf" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://h7um1huo6vut" path="res://main_menu.gd" id="1_7vrkn"]
+[ext_resource type="Texture2D" uid="uid://cb84qcqdt0x40" path="res://spritesheet.svg" id="3_jix8l"]
+[ext_resource type="TileSet" uid="uid://ccbq6yg4fng2o" path="res://tile_set.tres" id="4_glbon"]
+[ext_resource type="AudioStream" uid="uid://plexftqx8waj" path="res://annoying_song.wav" id="5_glbon"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7vrkn"]
+font = ExtResource("1_06t4h")
+font_color = Color(0.85882354, 0.9490196, 0.15294118, 1)
+outline_size = 2
+outline_color = Color(0.015686275, 0.16078432, 0.2509804, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rhts7"]
+font = ExtResource("1_06t4h")
+font_size = 54
+font_color = Color(0.85882354, 0.9490196, 0.15294118, 1)
+outline_size = 2
+outline_color = Color(0.015686275, 0.16078432, 0.2509804, 1)
+
+[sub_resource type="Animation" id="Animation_v34rh"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.06666667, 0.56666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.015686275, 0.16078432, 0.2509804, 1), Color(0.015686275, 0.16078432, 0.2509804, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ovn7s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.015686275, 0.16078432, 0.2509804, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_urwwa"]
+_data = {
+&"RESET": SubResource("Animation_ovn7s"),
+&"fade_in": SubResource("Animation_v34rh")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlkkf"]
+atlas = ExtResource("3_jix8l")
+region = Rect2(0, 130, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qe12f"]
+atlas = ExtResource("3_jix8l")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jix8l"]
+font = ExtResource("1_06t4h")
+font_color = Color(0.8117647, 0.90588236, 0.15686275, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7vrkn")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = 95.0
+offset_right = 44.0
+offset_bottom = 118.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press [Enter]"
+label_settings = SubResource("LabelSettings_7vrkn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -242.0
+offset_top = -155.0
+offset_right = 243.0
+offset_bottom = -70.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Mask of the Minotaur"
+label_settings = SubResource("LabelSettings_rhts7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.015686275, 0.16078432, 0.2509804, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
+libraries = {
+&"": SubResource("AnimationLibrary_urwwa")
+}
+autoplay = "fade_in"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -176.0
+offset_top = -46.0
+offset_right = -48.0
+offset_bottom = 146.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.28154418
+texture = SubResource("AtlasTexture_nlkkf")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAEAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAEAAAAAAAMAAAAAAAEAAAAAAAQAAAAAAAEAAAAAAAUAAAAAAAEAAAAAAAYAAAAAAAEAAAAAAAcAAAAAAAEAAAABAAcAAAAAAAEAAAACAAcAAAAAAAEAAAADAAcAAAAAAAEAAAAEAAcAAAAAAAEAAAAFAAcAAAAAAAEAAAAGAAcAAAAAAAEAAAAHAAcAAAAAAAEAAAAIAAcAAAAAAAEAAAAJAAcAAAAAAAEAAAAJAAYAAAAAAAEAAAAJAAUAAAAAAAEAAAAJAAQAAAAAAAEAAAAJAAMAAAAAAAEAAAAJAAEAAAAAAAEAAAAJAAAAAAAAAAEAAAAJAAIAAAAAAAEAAAAIAAAAAAAAAAEAAAAHAAAAAAAAAAEAAAAGAAAAAAAAAAEAAAAFAAAAAAAAAAEAAAAEAAAAAAAAAAEAAAADAAAAAAAAAAEAAAACAAAAAAAAAAEAAAABAAAAAAAAAAEAAAA=")
+tile_set = ExtResource("4_glbon")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 422.0
+offset_top = 304.0
+offset_right = 486.0
+offset_bottom = 368.0
+rotation = -0.46324515
+texture = SubResource("AtlasTexture_qe12f")
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -175.0
+offset_top = -62.0
+offset_right = -70.0
+offset_bottom = -36.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "A game by Finix"
+label_settings = SubResource("LabelSettings_jix8l")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_glbon")
+autoplay = true

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://t3u1oa24uqs3"]
+
+[ext_resource type="PackedScene" uid="uid://dxj4wgcdx6vyr" path="res://2d-kit/basic_moving_character_2d.tscn" id="1_5uspi"]
+[ext_resource type="Script" uid="uid://bbs4s7ok30go5" path="res://2d-kit/player_character_2d.gd" id="2_l5kfx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5uspi"]
+
+[node name="PlayerCharacter2D" instance=ExtResource("1_5uspi")]
+script = ExtResource("2_l5kfx")
+move_left_action = "move_left"
+move_right_action = "move_right"
+jump_action = "jump"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CapsuleShape2D_5uspi")
+
+[node name="Idle" type="Sprite2D" parent="." index="1"]
+
+[node name="Move" type="Sprite2D" parent="." index="2"]
+
+[node name="Jump" type="Sprite2D" parent="." index="3"]

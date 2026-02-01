@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://dibfmh114723r"]
+
+[ext_resource type="PackedScene" uid="uid://dulqgrxaea6h2" path="res://2d-kit/pass_through_character_2d.tscn" id="1_j21ca"]
+[ext_resource type="Script" uid="uid://cnyplw6hv8y1t" path="res://2d-kit/pass_through_player_2d.gd" id="2_emhow"]
+[ext_resource type="Texture2D" uid="uid://cb84qcqdt0x40" path="res://spritesheet.svg" id="3_dgclx"]
+[ext_resource type="PackedScene" uid="uid://dcjlbng4w370i" path="res://2d-kit/hurt_area_2d.tscn" id="4_ghhpg"]
+[ext_resource type="AudioStream" uid="uid://cpxowstugv4ub" path="res://death.wav" id="5_jw3pc"]
+[ext_resource type="AudioStream" uid="uid://20m853drtwth" path="res://jump.wav" id="6_wc0vm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_emhow"]
+radius = 16.0
+height = 48.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wtg88"]
+radius = 18.0
+height = 50.0
+
+[node name="PassThroughPlayer2D" instance=ExtResource("1_j21ca")]
+script = ExtResource("2_emhow")
+move_left_action = "move_left"
+move_right_action = "move_right"
+move_down_action = "move_down"
+jump_action = "jump"
+
+[node name="Idle" type="Sprite2D" parent="." index="0"]
+position = Vector2(0, -8)
+texture = ExtResource("3_dgclx")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 64)
+
+[node name="Move" type="Sprite2D" parent="." index="1"]
+visible = false
+position = Vector2(0, -7)
+texture = ExtResource("3_dgclx")
+hframes = 2
+region_enabled = true
+region_rect = Rect2(64, 0, 128, 64)
+
+[node name="Jump" type="Sprite2D" parent="." index="2"]
+visible = false
+position = Vector2(0, -2)
+texture = ExtResource("3_dgclx")
+region_enabled = true
+region_rect = Rect2(192, 0, 64, 64)
+
+[node name="Dead" type="Sprite2D" parent="." index="3"]
+visible = false
+position = Vector2(0, -2)
+texture = ExtResource("3_dgclx")
+region_enabled = true
+region_rect = Rect2(256, 0, 64, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="4"]
+shape = SubResource("CapsuleShape2D_emhow")
+
+[node name="HurtArea2D" parent="." index="5" instance=ExtResource("4_ghhpg")]
+team = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea2D" index="0"]
+shape = SubResource("CapsuleShape2D_wtg88")
+debug_color = Color(0.49488044, 0, 0.12182108, 0.41960785)
+
+[node name="Death" type="AudioStreamPlayer" parent="." index="6"]
+stream = ExtResource("5_jw3pc")
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="." index="7"]
+stream = ExtResource("6_wc0vm")
+
+[connection signal="hurt" from="HurtArea2D" to="." method="_on_hurt"]

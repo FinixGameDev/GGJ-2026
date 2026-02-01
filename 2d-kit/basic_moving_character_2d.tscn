@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxj4wgcdx6vyr"]
+
+[ext_resource type="Script" uid="uid://bdles4idkruno" path="res://2d-kit/basic_moving_character_2d.gd" id="1_1q8kp"]
+
+[node name="BasicMovingCharacter2D" type="CharacterBody2D"]
+collision_layer = 0
+floor_constant_speed = true
+floor_snap_length = 64.0
+script = ExtResource("1_1q8kp")

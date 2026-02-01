@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://df4an77wb5p7u"]
+
+[ext_resource type="Script" uid="uid://xs1t63kramxr" path="res://2d-kit/hit_area_2d.gd" id="1_3vro2"]
+
+[node name="HitArea2D" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_3vro2")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

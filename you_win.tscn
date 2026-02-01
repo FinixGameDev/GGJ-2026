@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://cr3qqg7gwhnb3"]
+
+[ext_resource type="PackedScene" uid="uid://dts64i5s0u5cx" path="res://controls_menu.tscn" id="1_vkac0"]
+[ext_resource type="Script" uid="uid://dlwgw6o8q4pe8" path="res://you_win.gd" id="2_rlycu"]
+[ext_resource type="Texture2D" uid="uid://cb84qcqdt0x40" path="res://spritesheet.svg" id="3_rlycu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20tug"]
+atlas = ExtResource("3_rlycu")
+region = Rect2(0, 130, 128, 192)
+
+[node name="You Win" instance=ExtResource("1_vkac0")]
+script = ExtResource("2_rlycu")
+
+[node name="Label2" parent="MarginContainer/VBoxContainer" index="0"]
+text = "YOU WIN"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/VBoxContainer" index="0"]
+text = "The mask is yours and so is the Minotaur"
+
+[node name="HBoxContainer3" parent="MarginContainer/VBoxContainer/VBoxContainer" index="1"]
+visible = false
+
+[node name="HBoxContainer4" parent="MarginContainer/VBoxContainer/VBoxContainer" index="2"]
+visible = false
+
+[node name="HBoxContainer2" parent="MarginContainer/VBoxContainer/VBoxContainer" index="3"]
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="." index="1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -96.0
+offset_right = 64.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_20tug")
